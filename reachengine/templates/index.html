@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+    <meta charset="utf-8">
+	{% load staticfiles %}
+	<title>{% block title %}ReachEngine Website {% endblock %}</title>
+	<script src="{% static 'app.js' %}"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+	</head>
+		<body style="align-content: center; ">
+			{% block pagecontent %}
+			<div class="header">
+				<h3 style="padding: 10px; background-color: #845EC2; border-radius: 10px;
+					padding: 10px;
+					width: 100%;
+					text-align: center;
+					color: white;
+					font-size: 30px;">
+					Reach Engine
+				</h3>
+			</div>
+		<div style="text-align: center; margin: 0 auto;">
+		<form action="{% url 'fetchHashTag' %}" >
+			
+			<input style="border-radius: 25px; border: 4px solid #845EC2; text-align: center; padding 20px; width: 500px; height: 50px;" 
+			type="text" name="fulltextarea" placeholder="Type a hashtag to search..">
+			
+			<input style="text-align: center; padding: 10px; border-radius: 10px;"
+			type="submit" value="Search"/>
+			
+			<br>
+			<form action="" id="n4"  onkeyup="sync()" 
+			style="text-align: center;">
+				<br>
+				<textarea rows="6" cols="50" id="textAreaToBeCopied" 
+				style="resize: none; text-position: absolute; vertical-align: middle; display: inline-block; border-radius: 25px; font-size: 15px; padding: 10px;">{{top5mostused}}
+				</textarea>
+				<input style="border-radius: 10px; text-align: center; padding: 10px;"
+				id="textAreaCopyButton" onclick="theCopyFunction()" type="button" value="Copy"/>
+				<br>
+				<script>
+					function theCopyFunction() {
+						var copyText = document.getElementById("textAreaToBeCopied");
+						copyText.select();
+						copyText.setSelectionRange(0, 99999);
+						document.execCommand("copy");
+						alert("Copied the text");
+						console.log(copyText.value);
+					}
+					
+					function theTwitterLoginButton() {
+						window.open('https://www.twitter.com/login', '_blank');
+					}
+				</script>
+				<!-- onclick="location.href='https://www.twitter.com/LOGIN';" -->
+				<br>
+				<div style="text-align: center;">
+				<input type="image" name="twitterLogin" src="https://bit.ly/3n7gpkR" width="100" height="48" alt="submit" onclick="theTwitterLoginButton()" />
+				</div>
+				<br>
+				<!-- <button id="loginButton" style="height: 48; width: 100;" onclick="theTwitterLoginButton()"><img src="https://bit.ly/3n7gpkR"></button> -->
+				<div style="text-align: center;">
+				<table style="width: 110%; margin-left: auto; margin-right: auto; border: 1px solid #845EC2; text-align: center; padding: 3px;">
+					<tr style="border: 1px solid #845EC2;">
+						<th style="border: 1px solid #845EC2;">Searched Keyword</th>
+						<th style="border: 1px solid #845EC2;">Top 5 Most Used<th>
+					</tr>
+						<td style="border: 1px solid #845EC2;">{{searched_word}}</td>
+						<td style="border: 1px solid #845EC2;">{{top5mostused}}</td>
+					</tr>
+				</table>
+				</div>	
+				
+				<br>
+				
+				
+				<!-- <p> <b>Searched Keyword : </b> {{searched_word}} </p>
+				<br>
+				<p> <b>Top 5 Most used relevant hashtags : </b> {{top5mostused}} </p>
+				<br> -->
+				<p> <b>Recently Searched Hashtags : </b> {{recentlySearched}} </p>
+
+			</form>
+		</form>
+		</div>
+		</body>
+</html>
+
+
+
+
+  {% endblock %}
+
+  </body>
+</html>

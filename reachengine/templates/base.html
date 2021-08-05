@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="display: grid;
+  place-items: center;  ">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Django Sample Site - {% block title %}{% endblock %}
+    </title>
+
+    <!-- <script src="{% static 'js/main.js' %}"></script> This is how to include a static file -->
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" /> -->
+  </head>
+  <body style="background-image: linear-gradient(to right top, #9ee6ee, #9de1fb, #a9daff, #bfd0ff, #d8c6fa, #d6c5fc, #d4c4fd, #d2c3ff, #acceff, #7fd8ff, #5adffe, #56e4e4);
+	font-family: Arial;
+    margin: 0;
+	display: grid;
+	place-items: center;  
+    background-repeat: no-repeat;
+    background-attachment: fixed;">
+    <div class="container">
+      {% block pagecontent %}
+      {% endblock %}
+    </div>
+  </body>
+</html>
